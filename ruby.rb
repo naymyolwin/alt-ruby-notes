@@ -93,4 +93,20 @@
 
 # p arr.select{|num| num.odd?}
 
+### hash or dictionary ###
+# hash = {'a' => 1, 'b' => 2, 'c' => 3}
+# hash2 = {a: 1, b: 2, c: 3} #symbol
+# p hash['a']
+# p hash2[:b]
+# p hash2.keys
+# p hash2.values
 
+# hash2.each {|key,value| p "#{key.class},#{value}"}
+
+# hash2[:d] = 4
+# p hash2
+
+# p hash2.select {|k,v| v.is_a?(String)}
+# p hash2.select {|k,v| v.odd?}
+# hash2.delete(:d)
+# p hash2
