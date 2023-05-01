@@ -58,6 +58,7 @@
 # end
 
 ### Arrays and Iterators ###
+# str = "abcdefg"
  arr = [1,2,3,4,5,6,7,8,9]
 # arr2 = 1..100 #range
 # arr3 = (1..100).to_a #range
@@ -74,5 +75,22 @@
 # arr.uniq! # remove duplicates
 # arr.empty? # check if empty or not
 # arr.include?(10) # check if the item is include or not
-#p arr.join # join array as string
-p arr
+# p arr.join # join array as string
+# p arr.join("_") # join array as string
+# p str.split(",")
+# p arr
+# p %w(nay myo lwin) # trun each word in to array
+
+# for i in arr
+#     p i
+# end
+
+# arr.each do |i|
+#     p i
+# end
+
+# arr.each {|i| p i+10}
+
+# p arr.select{|num| num.odd?}
+
+
