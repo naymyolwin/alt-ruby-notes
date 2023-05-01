@@ -1,3 +1,6 @@
+### General ###
+# puts 20.times { print "-"}
+
 ### String ###
 # fn = "nay myo"
 # ln = "lwin"
@@ -48,9 +51,28 @@
 # puts multiply(num1,num2)
 
 ### Branching (conditionals) ###
-# if true
+# if (true && true) || false
 #     puts "true"
+# elsif (true || false)
 # else puts "false"
 # end
 
-
+### Arrays and Iterators ###
+ arr = [1,2,3,4,5,6,7,8,9]
+# arr2 = 1..100 #range
+# arr3 = (1..100).to_a #range
+# arr2 = arr2.to_a
+# arr2 = arr2.shuffle! # ! will mutate the original 
+# arr.last
+# p arr2
+# arr << 10 # add 10 to end of array
+# arr.append(11) # add 10 to end of array
+# arr.push(12) # add 12 to end of array
+# arr.unshift(0) # add 0 to begining of array
+# arr.pop # remove the last item from array
+# arr.shift # remove the first item from array
+# arr.uniq! # remove duplicates
+# arr.empty? # check if empty or not
+# arr.include?(10) # check if the item is include or not
+#p arr.join # join array as string
+p arr
