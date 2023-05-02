@@ -59,7 +59,7 @@
 
 ### Arrays and Iterators ###
 # str = "abcdefg"
- arr = [1,2,3,4,5,6,7,8,9]
+# arr = [1,2,3,4,5,6,7,8,9]
 # arr2 = 1..100 #range
 # arr3 = (1..100).to_a #range
 # arr2 = arr2.to_a
@@ -89,6 +89,9 @@
 #     p i
 # end
 
+# break # will break from the loop
+# next # will skip the current iteration
+
 # arr.each {|i| p i+10}
 
 # p arr.select{|num| num.odd?}
@@ -110,3 +113,46 @@
 # p hash2.select {|k,v| v.odd?}
 # hash2.delete(:d)
 # p hash2
+
+### Ruby Style Guide ###
+## https://github.com/rubocop/ruby-style-guide
+# snake_case
+# CamelCase
+# camelCase
+# use 2 space for indentation
+# class name CamelCase
+
+### Intro to OOP ###
+# class Student
+#     attr_accessor :first_name, :last_name #no need to getter and setter if we use attr_accessor
+
+#     # @first_name
+#     # @last_name
+
+#     def initialize(first_name, last_name)
+#         @first_name = first_name
+#         @last_name = last_name
+#     end
+
+#     # # setter
+#     # def first_name=(name)
+#     #     @first_name = name
+#     # end
+
+#     # # getter
+#     # def first_name 
+#     #     @first_name
+#     # end
+
+#     # def to_s
+#     #     @first_name
+#     # end
+
+# end
+
+# nay = Student.new
+# nay.first_name = "Nay"
+# p nay.first_name
+# nay = Student.new("Nay Myo", "Lwin")
+# p nay
+
