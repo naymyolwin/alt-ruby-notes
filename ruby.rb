@@ -134,6 +134,8 @@
 ### hash or dictionary ###
 # hash = {'a' => 1, 'b' => 2, 'c' => 3}
 # hash2 = {a: 1, b: 2, c: 3} #symbol
+# property = :a
+# hash2[property] #=> 1
 # p hash['a']
 # p hash2[:b]
 # p hash2.keys
@@ -202,4 +204,3 @@
 # my_password.cost                 #=> 12
 # my_password == "my password"     #=> true
 # my_password == "not my password" #=> false
-
