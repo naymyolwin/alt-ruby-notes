@@ -68,6 +68,7 @@
 ### Arrays and Iterators ###
 # str = "abcdefg"
 # arr = [1,2,3,4,5,6,7,8,9]
+# puts arr.length
 # arr2 = 1..100 #range
 # arr3 = (1..100).to_a #range
 # arr2 = arr2.to_a
@@ -82,6 +83,7 @@
 # arr.shift # remove the first item from array
 # arr.uniq! # remove duplicates
 # arr.empty? # check if empty or not
+# arr.delete_at(2) # delete index 2
 # arr.include?(10) # check if the item is include or not
 # p arr.join # join array as string
 # p arr.join("_") # join array as string
