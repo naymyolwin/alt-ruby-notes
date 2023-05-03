@@ -5,6 +5,16 @@
 # fn = "nay myo"
 # ln = "lwin"
 
+# String in Ruby are mutable
+# my_string = 'hello'
+# my_string[1] = 'a'
+# puts my_string
+# # => hallo
+
+# .ord # string to unicode number
+# .chr # unicode number to string
+# .strip # remove white space from begining and end of string
+
 # available methods
 # puts fn.methods
 # puts fn.class
@@ -84,7 +94,13 @@
 # arr.uniq! # remove duplicates
 # arr.empty? # check if empty or not
 # arr.delete_at(2) # delete index 2
+# arr.delete(2) # delete index 1 that contain number 2
 # arr.include?(10) # check if the item is include or not
+# arr.slice(2..4) # slice array to 2 to 4 inclusive
+# arr.slice(2,0) # slice array start from 2 for 0 item, return empty array
+# arr.slice(2,1) # slice array start from 2 for 1 item, return 3
+# arr + arr # concat arr to arr
+# arr.reverse
 # p arr.join # join array as string
 # p arr.join("_") # join array as string
 # p str.split(",")
@@ -105,6 +121,15 @@
 # arr.each {|i| p i+10}
 
 # p arr.select{|num| num.odd?}
+
+# friends = ['Betty', 'Mary', 'Jane', 'David', 'Peter']
+# # Modify the code below
+# male_friends = friends[3..-1]
+# female_friends = friends[0..2]
+# puts male_friends
+# # -> ['David', 'Peter']
+# puts female_friends
+# # -> ['Betty', 'Mary', 'Jane']
 
 ### hash or dictionary ###
 # hash = {'a' => 1, 'b' => 2, 'c' => 3}
