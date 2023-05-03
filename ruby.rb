@@ -23,13 +23,6 @@
 # puts fn.sub("myo", "nay")
 # puts fn.gsub("myo", "nay")
 
-# first_name = "Nay"
-# new_first_name = first_name
-
-# first_name = "Nay Nay"
-# puts new_first_name 
-## even tho they are object, first_name is reassign to new location memory. not the same as JS
-
 ## \ (escape character)
 ## getting user input
 # input = gets.chomp
@@ -204,3 +197,16 @@
 # my_password.cost                 #=> 12
 # my_password == "my password"     #=> true
 # my_password == "not my password" #=> false
+
+# a = [1,2]
+# b = a
+# a.push(3)
+# puts a
+# puts b
+
+# c = {a: 1, b: 2}
+# d = c
+# c[:c] = 3
+
+# puts c
+# puts d
