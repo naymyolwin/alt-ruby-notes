@@ -210,3 +210,25 @@
 
 # puts c
 # puts d
+class Dog
+
+    @@count = 0
+  
+    def initialize 
+      @@count += 1  
+    end
+  
+    def self.count # need this to retrieve the @@count
+      @@count
+    end
+  end
+
+  class Shiba < Dog
+  end
+  
+  new_dog_1 = Dog.new
+  new_dog_2 = Dog.new
+  new_dog_3 = Dog.new
+  shiba_new_1 = Shiba.new
+
+  puts Dog.count
