@@ -210,25 +210,100 @@
 
 # puts c
 # puts d
-class Dog
+# class Dog
 
-    @@count = 0
+#     @@count = 0
   
-    def initialize 
-      @@count += 1  
+#     def initialize 
+#       @@count += 1  
+#     end
+  
+#     def self.count # need this to retrieve the @@count
+#       @@count
+#     end
+#   end
+
+#   class Shiba < Dog
+#   end
+  
+#   new_dog_1 = Dog.new
+#   new_dog_2 = Dog.new
+#   new_dog_3 = Dog.new
+#   shiba_new_1 = Shiba.new
+
+#   puts Dog.count
+
+# There are five principles in OOP. We call it SOLID:
+
+# S - Single Responsibility Principle
+# O - Open/Closed Principle
+# L - Liskov Substitution Principle
+# I - Interface Segregation Principle
+# D - Dependency Inversion Principle
+
+# Single responsibility: A class should have one and only one reason to change.  
+# Open-closed: A class should be open for extension but closed for modification.
+# Liskov substitution: Derived classes should be substitutable for their base classes.
+# Interface segregation: A client should never be forced to implement an interface that it doesn't use.  
+# Dependency inversion: A class should depend on abstractions, not concrete implementations.
+
+
+
+class DiceSet
+
+    def initialize
+        @values = []
+      end
+
+    def roll(num)
+        for i in (1..num)
+            @values.push(rand(1..6))
+        end
     end
-  
-    def self.count # need this to retrieve the @@count
-      @@count
+
+    def values
+         @values
     end
-  end
 
-  class Shiba < Dog
-  end
-  
-  new_dog_1 = Dog.new
-  new_dog_2 = Dog.new
-  new_dog_3 = Dog.new
-  shiba_new_1 = Shiba.new
+end
 
-  puts Dog.count
+def score(dice)
+    score = 0
+    
+    frequency = dice.reduce(Hash.new(0)) do |count, value|
+        count[value] += 1
+        count
+    end
+    frequency.each {|key, value|
+        if key == 1
+            while value > 0 do
+                if value >= 3
+                    score += 1000
+                    value -= 3
+                else
+                    score += 100
+                    value -= 1
+                end
+            end
+        elsif value >= 3
+            while value > 0 do
+                if value >= 3
+                    score += key * 100
+                    value -= 3
+                elsif key == 5
+                    score += 50
+                    value -= 1
+                else value -= 1
+                end
+            end
+        elsif key == 5
+            score += value * 50
+        end
+    }
+    return score
+end
+
+dice = DiceSet.new
+dice.roll(5)
+result = dice.values
+puts score([1,1,1,5,1])
