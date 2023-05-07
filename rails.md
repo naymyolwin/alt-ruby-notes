@@ -22,7 +22,7 @@
 - Step 1: You (the client) send the server a request demanding that a Tweet of yours to be created in the database
 - Step 2: Router interprets the URL, your request and its method type
 - Step 3: Router pass the request along to the controller responsible for processing
-- Step 4: Controllers go through Models to interact with the Database to manage information. The models run validations to check if your Tweet content is within 140 characters
+- Step 4: Controllers go through Models to interact with the Database to manage information. The models run validations to check
 - Step 5: Controllers picks a View (response templates) after processing.
 - Step 6: After a Response template (view) is picked, a response is made
 
