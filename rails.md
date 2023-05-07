@@ -50,3 +50,36 @@ rails generate controller pages
 - javascript\pack ->
 - models ->
 - views ->
+- config\routes -> define routes
+
+create new routes
+
+```sh
+get 'about', to: 'pages#about'
+```
+
+create scaffold
+
+- created migration file
+- that migration file will use to create the table
+- created model
+- created test
+- created controller
+- created routes
+- created views
+
+```sh
+rails generate scaffold Article title:string description:text
+```
+
+to run migration file
+
+```sh
+rails db:migrate
+```
+
+to check the routes
+
+```sh
+rails routes --expanded
+```
