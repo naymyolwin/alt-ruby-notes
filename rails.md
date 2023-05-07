@@ -28,6 +28,10 @@
 
 ### Rails folder
 
+```sh
+rails new alpha_blog
+```
+
 - controllers folder
 - models folder
 - views folder
@@ -72,6 +76,8 @@ create scaffold
 rails generate scaffold Article title:string description:text
 ```
 
+- string has character limit of 250
+
 to run migration file
 
 ```sh
@@ -82,4 +88,36 @@ to check the routes
 
 ```sh
 rails routes --expanded
+```
+
+### Rails naming conventions
+
+- Model name: article
+- Article model file name: article.rb
+- Article model class name: Article
+- Table name: articles
+
+create migration file
+
+```sh
+rails generate migration create_articles
+```
+
+add column
+
+```sh
+t.string :title
+```
+
+roll back migration
+
+```sh
+rails db:rollback
+```
+
+new migration file to add column
+
+```sh
+add_column :articles, :created_at, :datetime
+add_column :articles, :updated_at, :datetime
 ```
