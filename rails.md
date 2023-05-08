@@ -160,3 +160,34 @@ article.save
 article = Article.new(title: "third article", description: "third article")
 article.save
 ```
+
+To quit from console
+
+```
+exit
+```
+
+Find article
+
+```
+Article.find(2)
+Article.first
+Article.last
+```
+
+Delete article
+
+```
+aritcle.destroy
+```
+
+Need to add validation in article.rb model file.
+
+```ruby
+validates :title, presence: true, length: {minumum: 6, maximun: 100}
+validates :description, presence: true, length {minimun: 10m maximun: 30}
+```
+
+```
+article.errors.full_messages
+```
