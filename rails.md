@@ -86,7 +86,7 @@ rails db:migrate
 
 to check the routes
 
-```sh
+```
 rails routes --expanded
 ```
 
@@ -99,25 +99,64 @@ rails routes --expanded
 
 create migration file
 
-```sh
+```ruby
 rails generate migration create_articles
 ```
 
 add column
 
-```sh
+```ruby
 t.string :title
 ```
 
 roll back migration
 
-```sh
+```ruby
 rails db:rollback
 ```
 
 new migration file to add column
 
-```sh
+```ruby
 add_column :articles, :created_at, :datetime
 add_column :articles, :updated_at, :datetime
+```
+
+Access to Rails console
+
+```ruby
+rails console or rails c
+```
+
+To see the article table
+
+```ruby
+Article.all
+```
+
+To create new record
+
+```ruby
+Article.create(title: "first article", description: "first article")
+```
+
+To create article variable
+
+```ruby
+article = Article.new
+```
+
+now can use getter and setter function
+
+```ruby
+article.title = "second article"
+article.description = "sencond article"
+article.save
+```
+
+3rd way
+
+```ruby
+article = Article.new(title: "third article", description: "third article")
+article.save
 ```
