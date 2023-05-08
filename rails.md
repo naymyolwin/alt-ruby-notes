@@ -184,10 +184,32 @@ aritcle.destroy
 Need to add validation in article.rb model file.
 
 ```ruby
-validates :title, presence: true, length: {minumum: 6, maximun: 100}
-validates :description, presence: true, length {minimun: 10m maximun: 30}
+validates :title, presence: true, length: {minimum: 6, maximum: 100}
+validates :description, presence: true, length: {minimum: 10, maximum: 30}
 ```
 
 ```
 article.errors.full_messages
 ```
+
+Retrive params
+
+```ruby
+def show
+        @article = Article.find(params[:id])
+end
+```
+
+Evaluate
+
+```ruby
+<% @article.title %>
+```
+
+Evaluate and Display
+
+```ruby
+<%= @article.title %>
+```
+
+can call `buybug` anywhere to stop and debug
