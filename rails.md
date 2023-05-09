@@ -213,3 +213,9 @@ Evaluate and Display
 ```
 
 can call `buybug` anywhere to stop and debug and `continue` to continue with the code.
+
+check routes
+
+```ruby
+rails routes --expanded
+```
