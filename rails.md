@@ -212,4 +212,4 @@ Evaluate and Display
 <%= @article.title %>
 ```
 
-can call `buybug` anywhere to stop and debug
+can call `buybug` anywhere to stop and debug and `continue` to continue with the code.
