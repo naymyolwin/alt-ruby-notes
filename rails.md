@@ -219,3 +219,11 @@ check routes
 ```ruby
 rails routes --expanded
 ```
+
+routes
+
+```ruby
+resources :articles, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+or
+resources: articles
+```
