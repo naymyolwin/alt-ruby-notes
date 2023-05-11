@@ -227,3 +227,26 @@ resources :articles, only: [:show, :index, :new, :create, :edit, :update, :destr
 or
 resources: articles
 ```
+
+DB change methods
+
+| Method         | Description                                                                  |
+| -------------- | ---------------------------------------------------------------------------- |
+| add_column     | add a new column in a table                                                  |
+| add_index      | create an index in a table                                                   |
+| add_reference  | add a new relationship with another table                                    |
+| add_timestamps | add two columns created_at and updated_at with datetime data type            |
+| create_table   | create a new table                                                           |
+| drop_table     | remove table from database schema; all record will be gone                   |
+| remove_column  | remove a column from a table; all records will gone for that specific column |
+
+Rails DB Associations
+
+```
+belongs_to
+has_one
+has_many
+has_many :through
+has_one :through
+has_and_belongs_to_many
+```
