@@ -250,3 +250,9 @@ has_many :through
 has_one :through
 has_and_belongs_to_many
 ```
+
+Update DB
+
+```ruby
+Article.update_all(user_id: User.first.id)
+```
