@@ -1,5 +1,100 @@
 # Rails
 
+### Sample Controller
+
+```ruby
+class ArticlesController < ApplicationController
+
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:show, :index]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+
+    def show
+    end
+
+    def index
+        @articles = Article.paginate(page: params[:page], per_page: 5)
+    end
+
+    def new
+        @article = Article.new
+    end
+
+    def create
+        @article = Article.new(article_params)
+        @article.user = current_user
+        if @article.save
+            flash[:notice] = "Article created successfully"
+            redirect_to @article
+        else
+            render 'new', status: :unprocessable_entity
+        end
+    end
+
+    def edit
+       # @article = Article.find(params[:id])
+    end
+
+    def update
+       # @article = Article.find(params[:id])
+        if @article.update(article_params)
+            flash[:notice] = "Article was updated successfully"
+            redirect_to @article
+        else
+            render 'edit', status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+       # @article = Article.find(params[:id])
+        @article.destroy
+        redirect_to articles_path
+    end
+
+    private
+    def set_article
+        @article = Article.find(params[:id])
+    end
+
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
+
+    def require_same_user
+        if current_user != @article.user && !current_user.admin?
+            flash[:alert] = "Not your article"
+            redirect_to @article
+        end
+    end
+
+end
+```
+
+### Sample Model
+
+```ruby
+class Category < ApplicationRecord
+    validates :name, presence: true, length: {minimum: 3, maximum: 25}
+    validates_uniqueness_of :name
+end
+```
+
+### Sample Route
+
+```ruby
+Rails.application.routes.draw do
+  root 'pages#home'
+  get 'about', to: 'pages#about'
+  resources :articles
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  resources :categories, except: [:destroy]
+end
+```
+
 ### MVC
 
 - Model
@@ -255,4 +350,20 @@ Update DB
 
 ```ruby
 Article.update_all(user_id: User.first.id)
+```
+
+Before save
+
+```
+before_save {self.email = email.downcase}
+```
+
+```
+rails routes --expanded | grep edit
+```
+
+generating the test files
+
+```
+rails g test_unit:scaffold category
 ```
