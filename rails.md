@@ -1,5 +1,15 @@
 # Rails
 
+### General Notes
+
+- model use singular
+- table use plural
+- class name in capital
+- rails generate migration add_user_id_to_articles
+- add_column :articles, :user_id, :integer
+- rails db:migrate
+- rails db:rollback to roll back the migration
+
 ### Sample Controller
 
 ```ruby
@@ -90,6 +100,21 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: {case_sensitive: false}, length: {maximum: 105}, format: {with: VALID_EMAIL_REGEX}
     has_secure_password
 end
+```
+
+If you made a huge mess in all your migration files, and you don't mind destroying your database, you can do these:
+
+    Run rails db:drop to destroy the whole database
+    Run rails db:create to create a new database
+    Run rails db:migrate
+
+```
+belongs_to :[table name in singular]
+has_many :[table name in plural]
+```
+
+```
+https://dbdiagram.io/home
 ```
 
 ### Sample Route
@@ -385,4 +410,14 @@ Tailwind CSS watch
 
 ```ruby
 bin/rails tailwindcss:watch
+```
+
+rails admin for visualizing database records
+
+```ruby
+gem 'rails_admin', '~> 2.0'
+bundle install
+rails g rails_admin:install
+rails s
+http://localhost:3000/admin
 ```
