@@ -421,3 +421,11 @@ rails g rails_admin:install
 rails s
 http://localhost:3000/admin
 ```
+
+Favicon
+put the image named favicon.ico in image folder
+inside application.html.erb
+
+```
+<%= favicon_link_tag %>
+```
