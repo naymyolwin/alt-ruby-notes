@@ -426,6 +426,27 @@ Favicon
 put the image named favicon.ico in image folder
 inside application.html.erb
 
-```
+```ruby
 <%= favicon_link_tag %>
+```
+
+password column need to name as below in order to secure passwork to work.
+along with has_secure password in model file
+
+```ruby
+t.string :password_digest
+```
+
+hirb gem to show table in proper format
+
+```
+create multiple data using seed.rb
+-   create seed.rb in model folder
+-   User.create(...)
+-   rails db:seed
+
+gem hirb
+bundle install
+rails c
+Hirb enable
 ```
