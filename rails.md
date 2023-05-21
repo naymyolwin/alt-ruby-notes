@@ -440,13 +440,31 @@ t.string :password_digest
 hirb gem to show table in proper format
 
 ```
-create multiple data using seed.rb
--   create seed.rb in model folder
+create multiple data using seeds.rb
+-   create seeds.rb in db folder
 -   User.create(...)
 -   rails db:seed
 
-gem hirb
+gem 'hirb'
 bundle install
 rails c
-Hirb enable
+Hirb.enable
+```
+
+# To make Flash Message
+
+# before_action
+
+# helper_method
+
+# current_user.messages.build(message_params)
+
+# websocket protocol and actioncable
+
+- chatroom channel
+- controller to create broadcast data
+- JS to handle data to displauy
+
+```ruby
+rails generate channel chatroom
 ```
