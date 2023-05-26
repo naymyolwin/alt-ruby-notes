@@ -102,6 +102,30 @@ class User < ApplicationRecord
 end
 ```
 
+```ruby
+class Session < ApplicationRecord
+
+  belongs_to :user
+  before_validation :generate_session_token
+
+  private
+
+    def generate_session_token
+      self.token = SecureRandom.urlsafe_base64
+    end
+end
+```
+
+# migration file
+
+```ruby
+class AddUserIdToSessions < ActiveRecord::Migration[6.0]
+  def change
+    add_belongs_to :sessions, :user
+  end
+end
+```
+
 If you made a huge mess in all your migration files, and you don't mind destroying your database, you can do these:
 
     Run rails db:drop to destroy the whole database
