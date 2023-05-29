@@ -492,3 +492,15 @@ Hirb.enable
 ```ruby
 rails generate channel chatroom
 ```
+
+<!-- Stock Tracker Social Media App -->
+
+## devise gem
+
+add in gemfile
+
+- gem 'devise'
+- rails generate devise:install
+- rails generate devise:views
+- rails generate devise User (model)
+-
