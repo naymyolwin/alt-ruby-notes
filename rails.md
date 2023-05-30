@@ -523,3 +523,22 @@ class Stock < ApplicationRecord
     client.price(ticker_symbol)
   end
 ```
+
+### secure api call
+
+- use the master key file to encrypt for the credential file. master.key file need to be ignore in the gitignore file.
+
+```ruby
+  - credentials.yml.enc
+  - master.key
+  - rails creditials:edit
+  - EDITOR="code --wait" rails credentials:edit
+  - rails c
+  - Rails.application.credentials.aws[:access_key_id]
+```
+
+```ruby
+  client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
+      endpoint: 'https://sandbox.iexapi.com/v1'
+    )
+```
