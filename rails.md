@@ -493,14 +493,33 @@ Hirb.enable
 rails generate channel chatroom
 ```
 
-<!-- Stock Tracker Social Media App -->
+---
+
+# Stock Tracker Social Media App
 
 ## devise gem
 
-add in gemfile
-
+```ruby
 - gem 'devise'
 - rails generate devise:install
 - rails generate devise:views
 - rails generate devise User (model)
--
+```
+
+```ruby
+- gem 'devise-bootstrap-views', '~> 1.0'
+- rails generate devise:view:bootstrap_templates
+```
+
+- model method for dealing with database, in this case, using for API call
+- controller method for dealing with view and model
+
+```ruby
+class Stock < ApplicationRecord
+  def self.new_lookup(ticker_symbol)
+    client = IEX::Api::Client.new(publishable_token: 'token',
+      endpoint: 'https://sandbox.iexapi.com/v1'
+    )
+    client.price(ticker_symbol)
+  end
+```
