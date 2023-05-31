@@ -520,8 +520,18 @@ class Stock < ApplicationRecord
     client = IEX::Api::Client.new(publishable_token: 'token',
       endpoint: 'https://sandbox.iexapi.com/v1'
     )
-    client.price(ticker_symbol)
+    begin
+      new(ticker: ticker_symobl, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
+    rescue => exception
+      return nil
+    end
+
   end
+```
+
+```ruby
+rails c
+Stock.new_lookup('AAPL')
 ```
 
 ### secure api call
@@ -541,4 +551,37 @@ class Stock < ApplicationRecord
   client = IEX::Api::Client.new(publishable_token: Rails.application.credentials.iex_client[:sandbox_api_key],
       endpoint: 'https://sandbox.iexapi.com/v1'
     )
+```
+
+```ruby
+rails g controller user my_portfolio
+```
+
+- create user contoller with my_portfolio method
+- create my_portfolio route
+- create view
+
+### working with ajax
+
+update the form to use with ajax
+
+```ruby
+<%= form_tag search_stock_path, remote: true, method: :get do %>
+<% end %>
+```
+
+update view using javascript, need to update the StockController
+
+```ruby
+if @stock
+  respond_to do |format|
+    format.js {render partial: 'users/result'}
+```
+
+- need to create users/\_result.js.erb
+- j will escape javascript and render users/\_result.html.erb
+- escape_javascript(render 'users/result.html')
+
+```javascript
+document.querySelector('#reslult').innerHTML = '<%= j render 'users/result.html' %>'
 ```
