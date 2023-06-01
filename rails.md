@@ -585,3 +585,25 @@ if @stock
 ```javascript
 document.querySelector('#reslult').innerHTML = '<%= j render 'users/result.html' %>'
 ```
+
+This command will create
+
+- controller
+- model
+- table
+- association
+
+```ruby
+rails g resources UserStock user:references stock:references
+```
+
+```ruby
+has_many: users, through: :user_stocks
+```
+
+```ruby
+user = User.first
+stock = Stock.last
+user.stocks << stock
+stock.users << user
+```
