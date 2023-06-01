@@ -607,3 +607,15 @@ stock = Stock.last
 user.stocks << stock
 stock.users << user
 ```
+
+devise also provide current_user method
+
+```ruby
+@tracked_stocks = current_user.stocks
+```
+
+conditional css class
+
+```
+<% 'active' if request.path == my_portfolio_path %>
+```
