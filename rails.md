@@ -619,3 +619,15 @@ conditional css class
 ```
 <% 'active' if request.path == my_portfolio_path %>
 ```
+
+devise user update need to senitize at controller level, in ApplicationController
+
+```ruby
+before_action :configure_permitted_parameters, if: :devise_controller?
+
+protect
+
+def configure_permitted_parameters
+  devise_parameter_senitizer.permit(:account_update, keys[:first_name, :last_name])
+end
+```
