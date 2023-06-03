@@ -631,3 +631,28 @@ def configure_permitted_parameters
   devise_parameter_senitizer.permit(:account_update, keys[:first_name, :last_name])
 end
 ```
+
+## self referencial association
+
+```ruby
+rails g model Friendship user:references
+```
+
+in migration file
+
+```ruby
+t.references :friend, references: :users, foreign_key: {to_table: :users}
+```
+
+FriendShip model file
+
+```ruby
+belong_to :friend, class_name 'User'
+```
+
+Users model file
+
+```ruby
+has_many :friendships
+has_many :friends, through: :friendships
+```
