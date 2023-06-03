@@ -657,7 +657,7 @@ has_many :friendships
 has_many :friends, through: :friendships
 ```
 
-wild card for seach
+### wild card for seach
 
 ```ruby
 User.where("email like ?", "%gmail.com%")
