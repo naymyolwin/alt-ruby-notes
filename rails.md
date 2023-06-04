@@ -700,3 +700,23 @@ end
 ```
 
 # Photo App
+
+gem for bootstrap
+
+```ruby
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
+```
+
+```ruby
+rails g bootstrap:install static
+rails g bootsrtap:layout application
+rails g devise:views:locale en
+rails g devise:veiws:bootstrap_template
+```
+
+in application.css
+
+```ruby
+*= require devise_bootstrap_views
+```
