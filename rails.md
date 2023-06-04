@@ -698,3 +698,5 @@ def search
   @friends = current_user.except_current_user(@friends)
 end
 ```
+
+# Photo App
