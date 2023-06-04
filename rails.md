@@ -663,7 +663,7 @@ has_many :friends, through: :friendships
 User.where("email like ?", "%gmail.com%")
 ```
 
-Controller method
+### Model Method
 
 ```ruby
 def self.search(param)
@@ -687,5 +687,14 @@ end
 
 def self.matches(field_name, param)
   where("#{field_name} like ?", "%#{param}%")
+end
+```
+
+### Controller Method
+
+```ruby
+def search
+  @friends = User.search(params[:friend])
+  @friends = current_user.except_current_user(@friends)
 end
 ```
