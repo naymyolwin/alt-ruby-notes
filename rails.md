@@ -720,3 +720,36 @@ in application.css
 ```ruby
 *= require devise_bootstrap_views
 ```
+
+### Active Storage
+
+```ruby
+rails active_storage:install
+rails db:migrate
+```
+
+create config/storage.yml
+
+```ruby
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+```
+
+config/environments/development.rb
+
+```ruby
+# Using the local settings for Active Storage
+config.active_storage.service = :local
+```
+
+config/environments/test.rb
+
+```ruby
+# Using the test settings for Active Storage
+config.active_storage.service = :test
+```
