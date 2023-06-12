@@ -753,3 +753,62 @@ config/environments/test.rb
 # Using the test settings for Active Storage
 config.active_storage.service = :test
 ```
+
+```ruby
+class Tweet < ApplicationRecord
+  ...
+  has_one_attached :image
+  ...
+end
+```
+
+```ruby
+class TweetsController < ApplicationController
+  ...
+
+  private
+
+    def tweet_params
+      params.require(:tweet).permit(:message, :image)
+    end
+end
+```
+
+Using AWS S3 to store image
+
+```ruby
+gem 'aws-sdk', '~> 3.0'
+```
+
+storage.yml
+
+```ruby
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+amazon:
+  service: S3
+  access_key_id: <%= ENV['AWS_S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_S3_SECRET_ACCESS_KEY'] %>
+  region: "us-east-1"
+  bucket: <%= ENV['PHOTO_UPLOAD_BUCKET'] %>
+```
+
+config/environments/development.rb
+
+```ruby
+config.active_storage.service = :amazon
+```
+
+.env file
+
+```ruby
+PHOTO_UPLOAD_BUCKET=xxx
+AWS_S3_ACCESS_KEY_ID=xxx
+AWS_S3_SECRET_ACCESS_KEY=xxx
+```
