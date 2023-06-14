@@ -812,3 +812,143 @@ PHOTO_UPLOAD_BUCKET=xxx
 AWS_S3_ACCESS_KEY_ID=xxx
 AWS_S3_SECRET_ACCESS_KEY=xxx
 ```
+
+### TDD
+
+```ruby
+RSpec.describe 'Math' do
+  context '1+1' do
+    it 'equals to 2' do
+      expect(1+1).to eq(2)
+    end
+
+    it 'does not equal to 3' do
+      expect(1+1).not_to eq(3)
+    end
+  end
+end
+```
+
+```ruby
+RSpec.describe 'User' do
+  context 'User.create' do
+    it 'creates new a user' do
+      # Because a new user record is created, User.count should increase by 1
+      expect(User.create(first_name: "Harry", email: "test@test.com")).to change { User.count }.by(1)
+    end
+
+    it 'has first_name and email address in the attributes' do
+      user = User.create(first_name: "Harry", email: "test@test.com")
+
+      # This is a test to see if the user's first_name and email are equal to the values we passed in.
+      expect(user.first_name).to eq("Harry")
+      expect(user.email).to eq("test@test.com")
+    end
+  end
+end
+```
+
+```ruby
+# spec/routing/all_routes_spec.rb
+require "rails_helper"
+
+RSpec.describe "Route definition", :type => :routing do
+ it "of POST /sessions" do
+   expect(:post => "/sessions").to route_to(:controller => "sessions", :action => "create")
+ end
+end
+```
+
+```ruby
+# spec/controllers/sessions_controller_spec.rb
+RSpec.describe SessionsController, type: :controller do
+  render_views
+
+  describe 'POST /sessions' do
+    it 'renders new session object' do
+      user = FactoryBot.create(:user, username: 'asdasdasd', password: 'asdasdasd')
+
+      post :create, params: {
+        user: {
+          username: 'asdasdasd',
+          password: 'asdasdasd'
+        }
+      }
+
+      expect(response.body).to eq({
+        success: true
+      }.to_json)
+    end
+  end
+end
+```
+
+```ruby
+# spec/models/tweet_spec.rb
+    it 'must belong to a user' do
+      expect {
+        Tweet.create!(message: 'test')
+      }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+```
+
+```ruby
+# spec/models/tweet_spec.rb
+    it 'must have the presence of message' do
+      expect {
+        FactoryBot.create(:tweet, message: nil)
+      }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+```
+
+```ruby
+# spec/models/tweet_spec.rb
+    it 'must have a message with max. 140 characters' do
+      expect {
+        FactoryBot.create(:tweet, message: 'c' * 141)
+      }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+```
+
+```ruby
+# spec/controllers/tweets_controller_spec.rb
+    it 'OK rate limit: 30 tweets per hour' do
+      user = FactoryBot.create(:user) # create a user
+      session = user.sessions.create # create a session for the user
+      @request.cookie_jar.signed['twitter_session_token'] = session.token # set the session token in the cookie, so that the user is logged in "in the front-end"
+
+      # create 30 tweets for the user now, so that the next tweet should fail to be created
+      30.times do |i|
+        FactoryBot.create(:tweet, user: user)
+      end
+
+      # check that the user has 30 tweets
+      expect(user.tweets.count).to eq(30)
+
+      # make the POST request
+      post :create, params: {
+        tweet: {
+          message: 'Test Message'
+        }
+      }
+
+      # check that the user has 30 tweets, again
+      expect(user.tweets.count).to eq(30)
+    end
+```
+
+Fat Controller, Thin Model
+Thin Controller, Fat Model
+Thin Controller, Thin Model
+
+Clean Code Ruby
+
+```
+https://github.com/uohzxela/clean-code-ruby#introduction
+```
+
+Clean Code for Rails
+
+```
+https://github.com/thoughtbot/guides/tree/main/rails
+```
